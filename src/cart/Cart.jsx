@@ -6,9 +6,13 @@ import carbonNeutral from '../assets/images/icon-carbon-neutral.svg';
 import CartItem from './CartItem';
 
 
-const Cart = () => {
+const Cart = ({setOrderVisible}) => {
     const {cartItems, getTotalPrice} = useCart();
     const [totalPrice, setTotalPrice] = useState(0);
+
+    const handleOrderVisible = () => {
+        setOrderVisible((prev) => !prev);
+    }
     
     useEffect(() => {
         setTotalPrice(getTotalPrice());
@@ -42,7 +46,7 @@ const Cart = () => {
                     <span className='text-normal'>This is a <span className='font-bold'>carbon-neutral</span> delivery</span>
                 </div>  
 
-                <button className='bg-red-600 text-white w-full mt-3 h-14 py-3 rounded-full'>Confirm order</button>
+                <button onClick={handleOrderVisible} className='bg-red-600 text-white w-full mt-3 h-14 py-3 rounded-full'>Confirm order</button>
                 </>
             )
         }

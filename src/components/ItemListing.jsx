@@ -17,7 +17,7 @@ const ItemListing = ({image, name, category, price}) => {
     }, [itemCount]);
 
   const handleAddToCart = () => {
-    addToCart({name: name, price});
+    addToCart({name: name, price, image: image.thumbnail});
   }
 
   const handleDecrementQuantity = () => {
